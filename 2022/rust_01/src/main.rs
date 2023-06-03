@@ -26,7 +26,7 @@ fn main() {
     calories_carrying.sort();
     calories_carrying.reverse();
 
-    let max_val = calories_carrying.last().unwrap();
+    let max_val = calories_carrying.first().unwrap();
     let sum: u32 = calories_carrying
         .iter()
         .take(3)
