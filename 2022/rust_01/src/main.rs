@@ -13,7 +13,6 @@ fn main() {
         match line.as_str() {
             "" => calories_carrying.push(0),
 
-
             _ => {
                 let calories = line.parse::<u32>().unwrap();
                 if let Some(last) = calories_carrying.last_mut() {
@@ -27,11 +26,11 @@ fn main() {
     calories_carrying.reverse();
 
     let max_val = calories_carrying.first().unwrap();
-    let sum: u32 = calories_carrying
+    let sum_of_last_three: u32 = calories_carrying
         .iter()
         .take(3)
         .sum();
 
     println!("MAX: {}", max_val);
-    println!("SUM OF LAST 3: {}", sum);
+    println!("SUM OF LAST 3: {}", sum_of_last_three);
 }
