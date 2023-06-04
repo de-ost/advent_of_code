@@ -1,4 +1,4 @@
-name: Rust Unit Tests for 2022-03
+name: Rust Unit Tests
 
 on:
   push:
@@ -25,8 +25,6 @@ jobs:
 
     - name: Build
       run: cargo build --verbose
-      working-directory: '2022/rust_03'
 
     - name: Run Unit Tests
       run: cargo test --verbose
-      working-directory: '2022/rust_03'
