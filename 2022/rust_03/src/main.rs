@@ -6,7 +6,7 @@ use std::{
 };
 
 fn main() {
-    // Part I
+    // Part I (Own)
     let mut result = 0;
     let file = File::open("resources/input.txt").unwrap();
     let reader = BufReader::new(file);
@@ -33,7 +33,7 @@ fn main() {
     }
     println!("Result: {}", result);
 
-    // Part II
+    // Part II (Group of 3 badges)
     let file = File::open("resources/input.txt").unwrap();
     let reader = BufReader::new(file);
 
