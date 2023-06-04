@@ -1,4 +1,4 @@
-name: Rust Unit Tests
+name: Rust Unit Tests for 2022-03
 
 on:
   push:
@@ -15,8 +15,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      with:
-        path: '2022/rust_03'
 
     - name: Set up Rust
       uses: actions-rs/toolchain@v1
@@ -25,6 +23,8 @@ jobs:
 
     - name: Build
       run: cargo build --verbose
+      working-directory: '2022/rust_03'
 
     - name: Run Unit Tests
       run: cargo test --verbose
+      working-directory: '2022/rust_03'
