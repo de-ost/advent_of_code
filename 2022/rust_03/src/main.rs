@@ -6,6 +6,7 @@ use std::{
 };
 
 fn main() {
+    // Part I
     let mut result = 0;
     let file = File::open("resources/input.txt").unwrap();
     let reader = BufReader::new(file);
@@ -23,18 +24,22 @@ fn main() {
         let value: i32;
         match shared_letters {
             Some(letters) => {
-                value = letters
-                    .chars()
-                    .map(|c| letter_value(c).unwrap())
-                    .sum();
+                value = letters.chars().map(|c| letter_value(c).unwrap()).sum();
             }
             None => value = 0,
         }
 
         result += value;
     }
-
     println!("Result: {}", result);
+
+    // Part II
+    let file = File::open("resources/input.txt").unwrap();
+    let reader = BufReader::new(file);
+
+    let badges = find_badges(reader).unwrap();
+    let sum: i32 = badges.iter().map(|c| letter_value(*c).unwrap()).sum();
+    println!("Badge sum: {}", sum);
 }
 
 fn same_letters(a: &str, b: &str) -> Option<String> {
@@ -80,6 +85,32 @@ fn letter_value(c: char) -> Result<i32, &'static str> {
     }
 
     Ok(letter_value)
+}
+
+fn find_badges(reader: BufReader<File>) -> Result<Vec<char>, &'static str> {
+    let mut lines = reader.lines();
+    let mut group: Vec<String>;
+    let mut group_badges: Vec<char> = Vec::new();
+
+    loop {
+        group = lines.by_ref().take(3).map(|s| s.unwrap()).collect();
+
+        if group.is_empty() {
+            break;
+        }
+
+        let a_b = same_letters(group[0].as_str(), group[1].as_str()).unwrap();
+        let a_b_c = same_letters(a_b.as_str(), group[2].as_str()).unwrap();
+
+        if a_b_c.len() == 1 {
+            let c = a_b_c.chars().next().unwrap();
+            group_badges.push(c);
+        } else {
+            return Err("Multiple badges for one group found");
+        }
+    }
+
+    Ok(group_badges)
 }
 
 #[cfg(test)]
