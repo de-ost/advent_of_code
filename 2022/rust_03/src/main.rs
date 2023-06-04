@@ -6,7 +6,7 @@ use std::{
 };
 
 fn main() {
-    // Part I (Own)
+    // Part I (In Own Backpack)
     let mut result = 0;
     let file = File::open("resources/input.txt").unwrap();
     let reader = BufReader::new(file);
