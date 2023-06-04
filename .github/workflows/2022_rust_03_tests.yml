@@ -1,0 +1,32 @@
+name: Rust Unit Tests for 2022-03
+
+on:
+  push:
+    paths:
+      - '2022/rust_03/**'
+  pull_request:
+    paths:
+      - '2022/rust_03/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        path: '2022/rust_03'
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+
+    - name: Build
+      run: cargo build --verbose
+      working-directory: '2022/rust_03'
+
+    - name: Run Unit Tests
+      run: cargo test --verbose
+      working-directory: '2022/rust_03'
