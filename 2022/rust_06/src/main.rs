@@ -34,16 +34,16 @@ fn find_marker(txt: Chars, marker_len: usize) -> Option<i32> {
     let mut buffer: Vec<char> = Vec::new();
 
     for character in txt {
-        if buffer.len() == marker_len {
-            return Some(count);
-        }
-
         if let Some(index) = buffer.iter().position(|&e| e == character) {
             buffer = buffer.split_off(index + 1);
         }
 
         buffer.push(character);
         count += 1;
+
+        if buffer.len() == marker_len {
+            return Some(count);
+        }
     }
     None
 }
