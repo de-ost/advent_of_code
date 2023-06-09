@@ -39,7 +39,7 @@ fn find_marker(txt: Chars, marker_len: usize) -> Option<i32> {
         }
 
         if let Some(index) = buffer.iter().position(|&e| e == character) {
-            buffer = buffer[index + 1..].to_vec();
+            buffer = buffer.split_off(index + 1);
         }
 
         buffer.push(character);
