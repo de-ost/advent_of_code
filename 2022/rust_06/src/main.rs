@@ -5,13 +5,15 @@ use std::{
     io::{self, BufRead, BufReader},
 };
 
+const START_OF_COMMUNICATION_MARKER: usize = 4;
+
 fn main() -> io::Result<()> {
     let file = File::open("resources/input.txt")?;
     let reader = BufReader::new(file);
 
     let mut count = 0;
     let mut buffer_count = 0;
-    let mut buffer: [char; 4] = [' '; 4];
+    let mut buffer: [char; START_OF_COMMUNICATION_MARKER] = [' '; START_OF_COMMUNICATION_MARKER];
 
     let mut found = false;
 
@@ -21,7 +23,7 @@ fn main() -> io::Result<()> {
                 buffer_count = 0;
             }
 
-            if buffer_count == 4 {
+            if buffer_count == START_OF_COMMUNICATION_MARKER {
                 found = true;
                 break 'search;
             }
