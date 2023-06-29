@@ -6,6 +6,7 @@ use std::{
 };
 
 const AT_MOST: usize = 100000;
+const SPACE_NEEDED: usize = 30000000;
 
 mod ffile;
 mod folder;
@@ -45,6 +46,15 @@ fn main() {
     let sum = sum_up(&cwd, AT_MOST);
 
     println!("Total sum: {}", sum);
+
+    // Part II
+    let free_space = 70000000 - cwd.get_size(0);
+    let space_needed = SPACE_NEEDED - free_space;
+
+    let del_space = find_smalles(&cwd, space_needed);
+    
+    println!("Del: {}", del_space);
+
 }
 
 fn process_command(inp: &[&str], cwd: &mut CWD) {
@@ -74,4 +84,18 @@ fn sum_up(cwd: &CWD, max_size: usize) -> u32 {
     }
 
     sum
+}
+
+fn find_smalles(cwd: &CWD, min_size: usize) -> usize {
+    let mut size = cwd.get_size(0);
+
+    for id in 1..cwd.folders.len() {
+        let new_size = cwd.get_size(id);
+
+        if size > new_size && new_size >= min_size {
+            size = new_size;
+        }
+    }
+
+    size
 }
