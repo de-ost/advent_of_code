@@ -1,0 +1,30 @@
+# Ignoriere die Ausgabe des TypeScript-Compilers
+dist/
+*.js
+*.js.map
+
+# Ignoriere von npm oder yarn erstellte Verzeichnisse
+node_modules/
+
+# Ignoriere von Visual Studio Code erstellte Dateien und Verzeichnisse
+.vscode/
+*.code-workspace
+
+# Ignoriere von WebStorm erstellte Dateien und Verzeichnisse
+.idea/
+
+# Ignoriere von TextEditoren erstellte temporäre Dateien
+*.swp
+*~
+
+# Ignoriere von Test-Laufwerken erstellte Verzeichnisse
+__tests__/
+test/
+
+# Ignoriere vom Betriebssystem erstellte Dateien
+.DS_Store
+Thumbs.db
+
+# Ignoriere von npm oder yarn erstellte Dateien
+package-lock.json
+yarn.lock
