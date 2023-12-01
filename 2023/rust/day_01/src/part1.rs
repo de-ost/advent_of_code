@@ -9,7 +9,7 @@ fn parse_first_last(txt: &str) -> u32 {
     let mut first_found = false;
 
     for c in txt.chars() {
-        if let Ok(num) = c.to_string().parse() {
+        if let Some(num) = c.to_digit(10) {
             if !first_found {
                 v = (num, num);
                 first_found = true;
