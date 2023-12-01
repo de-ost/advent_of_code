@@ -1,7 +1,6 @@
 // https://adventofcode.com/2023/day/1
 
 fn main() {
-    // read input file form resources line by line and call parse_first_last
     let input = include_str!("../resources/input.txt");
     let sum = input
         .split("\n")
